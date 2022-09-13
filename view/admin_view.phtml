@@ -1,0 +1,78 @@
+<?php
+if (!isset($_SESSION['user'])) {
+    header('Location:index.php?page=connection');
+}
+
+if (empty($_SESSION['role'] || empty($_SESSION['name']))) {
+    header('Location:index.php?page=connected');
+}
+
+
+?>
+<main>
+
+    <div class="loading-container">
+        <div class="layer-home hidden">
+            <div class="container">
+                        <div class="form-inscription pd-top">
+                            <div class="bg">
+                            <h1>Disponibilité de stage</h1>
+                            <form method="post">
+                                <label for="categories">Choisi une categorie :</label>
+                                <div class="input-group field">
+    
+                                    <select id="categories" name="categories">
+                                        <?php renderOption(); ?>
+    
+                                    </select>
+                                    </br>
+                                    <label for="description">Indique une description</label>
+                                    <input type="text" name="description" />
+    
+                                    <label for="date">Choisi une date</label>
+                                    <input type="date" name="date" />
+    
+                                    <label for="start-time">Choisi l'heure du début</label>
+                                    <input type="time" name="start-time" />
+    
+                                    <label for="end-time">Choisi l'heure de fin</label>
+                                    <input type="time" name="end-time" />
+    
+    
+    
+                                </div>
+                                <input type="submit" class="button" action="index.php?page=connection" value="POSTER" />
+                                <?php
+    
+                                if (isset($_GET['posting'])) {
+    
+                                    $login = htmlentities($_GET['posting']);
+    
+                                    switch ($login) {
+                                        case 'success';
+                                ?>
+                                            <div>
+                                                <strong>Stage mit en ligne.</strong>
+                                            </div>
+                                        <?php
+                                            break;
+    
+                                        case 'error';
+                                        ?>
+                                            <div>
+                                                <strong>Un des champs n'ai pas rempli.</strong>
+                                            </div>
+                                <?php
+    
+    
+                                    }
+                                }
+    
+                                ?>
+                            </form>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</main>

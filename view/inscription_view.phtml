@@ -1,0 +1,80 @@
+<main>
+        <div class="layer-home">
+        
+            <section class="form-inscription">
+                <h1>Créer un compte</h1>
+                <form method="post">
+                    <div class="input-group field">
+                    <input type="text" placeholder="Prénom" class="input-field" id="firstname" name="firstname"/>
+                    <label class="label" for="firstname">Prénom</label>
+                    </div>
+                    <div class="input-group field">
+                    <input type="text" placeholder="Nom" class="input-field" id="name" name="name" />
+                    <label class="label" for="name">Nom</label>
+                    </div>
+                    <div class="input-group field">
+                    <input type="password" placeholder="password" class="input-field" id="password" name="password"/>
+                    <label class="label" for="password">password</label>
+                    </div>
+                    <div class="input-group field">
+                    <input type="email" placeholder="E-mail" class="input-field" id="mail" name="mail"/>
+                    <label class="label" for="mail">E-mail</label>
+                    </div>
+                    <input type="submit" class="button" value="Créer"/>
+                
+            <?php 
+            if(isset($_GET['reg_err'])) {
+                    
+                    $err = htmlentities($_GET['reg_err']);
+                    
+                    switch($err)
+                    {
+                        case 'already';
+                        ?>
+                            <div>
+                                <strong>Compte déjà existant.</strong>
+                            </div>
+                        <?php
+                        break;
+                        
+                        case 'name_length';
+                        ?>
+                            <div>
+                                <strong>Nom invalide.</strong>
+                            </div>
+                        <?php
+                        break;
+                        
+                        case 'password_length';
+                        ?>
+                            <div>
+                                <strong>MDP invalide.</strong>
+                            </div>
+                        <?php
+                        break;
+                        
+                        case 'firstname_length';
+                        ?>
+                            <div>
+                                <strong>Prénom invalide.</strong>
+                            </div>
+                        <?php
+                        break;
+                        
+                        case 'mail_length';
+                        ?>
+                            <div>
+                                <strong>Mail invalide.</strong>
+                            </div>
+                        <?php
+                        
+                    }
+                };
+                
+            
+            ?>
+                </form>
+            </section>
+        </div>
+</main>
+

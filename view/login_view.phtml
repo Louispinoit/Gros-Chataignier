@@ -1,0 +1,54 @@
+<main>
+    <div class="layer-home">
+
+        <section class="form-inscription">
+            <h1>Connexion</h1>
+            <form method="post">
+                <div class="input-group field">
+                <input type="email" placeholder="E-mail" class="input-field" id="mail-login" name="mail-login"/>
+                <label class="label" for="mail-login">E-mail</label>
+                </div>
+                <div class="input-group field">
+                <input type="password" placeholder="password-login" class="input-field" id="password-login" name="password-login"/>
+                <label  class="label" for="password-login">password</label>
+                
+                </div>
+                <input type="submit" class="button" value="Connect"/>
+                <?php
+        
+        if(isset($_GET['login_err'])) {
+                
+                $err = htmlentities($_GET['login_err']);
+                
+                switch($err)
+                {
+                    case 'password';
+                    ?>
+                        <div>
+                        <strong>Mauvais mot de passe.</strong>
+                        </div>
+                    <?php
+                    break;
+                    
+                    case 'success';
+                    ?>
+                    <div>
+                        <strong>Inscription faite.</strong>
+                    </div>
+                    <?php
+                    
+                }
+        };
+        
+        
+        
+        
+        ?>
+            </form>
+            
+        </section>
+    </div>
+</main>
+
+
+

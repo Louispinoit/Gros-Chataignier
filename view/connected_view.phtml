@@ -1,0 +1,66 @@
+<main>
+<section class="connect-info">
+    <h1>Bonjour
+        <?php
+         echo $_SESSION['user'];
+         ?>    
+    </h1>
+    <a class="disconnect" href="index.php?page=disconnect">déconnexion</a>
+    <div class="change-password">
+        
+        <h3>Change ton mot de passe</h3>
+        <form method="post">
+            <div class="input-group field">
+                <input type="password" placeholder=" Mot de passe actuel" name="first-password"/>
+            </div>
+            <div class="input-group field">
+                <input type="password" placeholder=" Nouveau mot de passe " name="new-password"/>
+            </div>
+            <div class="input-group field">
+                <input type="password" placeholder=" Re-tape ton nouveau mdp " name="repeat-password"/>
+            </div>
+            <input type="submit" class="button" value="Modifier"/>
+        </form>
+        <form method="POST">
+            <input type="submit" name="button-delete" class="button red" value="Supprimer le compte"/>
+        </form>
+    </div>
+
+    
+    <?php
+
+if(isset($_GET['password_err'])) {
+        
+        $err = htmlentities($_GET['password_err']);
+        
+        switch($err)
+        {
+            case 'notsame';
+            ?>
+                <div>
+                    <strong>Ton mot de passe actuel n'ai pas le bon.</strong>
+                </div>
+            <?php
+            break;
+            
+            case 'repeatnotsame';
+            ?>
+                <div>
+                    <strong>Les deux mot de passe ne sont pas identique.</strong>
+                </div>
+            <?php
+            break;
+            
+            case 'success';
+            ?>
+                <div>
+                    <strong>Mot de passe changé!</strong>
+                </div>
+            <?php
+        
+        }  
+    };
+?>
+</section>
+</main>
+

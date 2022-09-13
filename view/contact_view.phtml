@@ -1,0 +1,43 @@
+
+<main>
+    <div class="layer-home">
+    
+        <section class="form-inscription padding">
+            <h1>Nous contacter</h1>
+            <form method="post">
+                <div class="input-group field">
+                <input type="text" placeholder="Prénom" class="input-field" id="firstname" name="firstname"/>
+                <label class="label" for="firstname">Prénom</label>
+                </div>
+                <div class="input-group field">
+                <input type="text" placeholder="Nom" class="input-field" id="name" name="name" />
+                <label class="label" for="name">Nom</label>
+                </div>
+                <div class="input-group field">
+                <input type="email" placeholder="E-mail" class="input-field" id="mail" name="mail" required/>
+                <label class="label" for="mail">E-mail</label>
+                </div>
+                <div class="input-group field">
+                <textarea required placeholder="Ecrit ton message" class="input-field" id="text" name="text"></textarea>
+                <label class="label" for="text">Ecrit ton message</label>
+                </div>
+                <input type="submit" class="button"  value="Envoyer"/>
+            </form>
+        </section>
+        <?php 
+        if(isset($_GET['contact_msg'])) {
+                
+                $msg = htmlentities($_GET['contact_msg']);
+                
+                switch($msg)
+                {
+                    case 'success';
+                    ?>
+                        <div>
+                            <strong>Message envoyé.</strong>
+                        </div>
+                        <?php
+        }
+        }; ?>
+    </div>
+</main>

@@ -1,0 +1,871 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+
+// reset css
+* {
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+}
+
+// initial color
+$red: #FF715B;
+$yellow: #FFBA49;
+$green: #5DA271;
+$black: black;
+$brown: #B6766E;
+::selection {
+    color: $brown;
+    background: $yellow;
+}
+
+// darkMod 
+.layer-home.darkMod {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+body.darkMod {
+    background: black;
+}
+
+.form-inscription.darkMod {
+    background: black;
+}
+
+h1.darkMod,
+h2.darkMod,
+.form-inscription .input-group input.darkMod,
+.stage.darkMod,
+p.darkMod,
+nav .nav-links ul li a.darkMod,
+.accessibility #accessibility.darkMod {
+    color: #fff;
+}
+
+//container
+.loading-container {
+    background-image: url("../image/loading-screen/pexels-sohail-nachiti-807598.jpg");
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .carousel {
+            margin-top: 20px;
+            width: 80vw;
+            height: 30vh;
+            position: relative;
+
+            .slide {
+                position: absolute;
+                inset: 0;
+                opacity: 0;
+                transition: 0.2s opacity ease-in-out;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .slide[data-active] {
+                opacity: 1;
+            }
+
+            .carousel-button {
+                position: absolute;
+                z-index: 2;
+                background: none;
+                top: 50%;
+                transform: translateY(-50%);
+                border: none;
+                font-size: 4rem;
+                color: rgba(255, 255, 255, 0.8);
+                cursor: pointer;
+                border-radius: 0.25rem;
+                padding: 0 0.5rem;
+            }
+
+            .carousel-button:hover,
+            .carousel-button:focus {
+                color: white;
+            }
+
+            .carousel:focus {
+                outline: 1px solid black;
+            }
+
+            .left-button {
+                left: 0;
+
+            }
+            .right-button {
+                right: 0;
+            }
+        }
+
+    }
+
+
+
+    header {
+        padding-bottom: 100px;
+    }
+    #video1 {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+    .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .text-loading-container {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        height: 50vh;
+        color: #fff;
+
+        h1 span {
+            font-family: 'Satisfy', cursive;
+            font-size: 5vw;
+            opacity: 0;
+            transition: all 0.4s ease;
+
+        }
+        span.fade {
+            opacity: 1;
+        }
+
+
+    }
+
+    .roni {
+        width: 30vw;
+        bottom: 100px;
+        transition: 0.2s;
+        background-color: rgba(0, 0, 0, 0.2);
+        border: solid 2px $green;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+}
+
+body {
+    background: #C4DFAA; //footer
+    footer {
+        z-index: 150;
+        border-top: 1px solid white;
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(45, 40, 27, 1) 70%, rgba(127, 135, 75, 1) 100%);
+
+        position: absolute;
+        width: 100%;
+
+        .footer-contact {
+            display: flex;
+            height: 100px;
+            justify-content: center;
+
+            p {
+                display: flex;
+                color: white;
+                width: 50%;
+                align-items: center;
+            }
+            .social {
+                color: white;
+                font-size: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                .fa-brands {
+                    color: white;
+                    margin: 10px 20px;
+                }
+            }
+
+        }
+
+    }
+}
+
+// navbar
+nav {
+    z-index: 10;
+    display: flex;
+    position: fixed;
+    background: rgba (255, 255, 255, 0.8);
+    border-bottom: 1px solid $green;
+    align-items: center;
+    box-shadow: 0 4px 4px rgba($green, 0.4);
+    justify-content: space-between;
+    width: 100vw;
+    min-height: 60px;
+    height: 8vh;
+    margin-bottom: 20px;
+
+
+
+
+    .fa-bars {
+        color: $yellow;
+        margin-right: 2em;
+        font-size: 26px;
+    }
+
+    nav .fa-bars:hover .nav-links {
+        display: block;
+
+    }
+
+
+    .nav-links {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 0vh;
+        top: 0vh;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        float: right;
+        text-align: center;
+        transition: all .5s;
+    }
+    .nav-links ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-item: center;
+        list-style: none;
+        visibility: hidden;
+    }
+    .nav-links ul li {
+        transition: all .5s;
+    }
+
+    .nav-links ul li a {
+        margin: 0 20px;
+        text-decoration: none;
+        color: $yellow;
+        line-height: 60px;
+        text-transform: uppercase;
+        font-weight: bold;
+        opacity: 0;
+        visibility: hidden;
+        font-family: 'Dosis', sans-serif;
+    }
+
+    .hamburger-btn {
+        display: block;
+        cursor: pointer;
+        z-index: 50;
+    }
+    #check {
+        display: none;
+    }
+
+    #check:checked~.nav-links {
+        height: 100vh;
+    }
+    #check:checked~.nav-links ul {
+        visibility: visible;
+    }
+    #check:checked~.nav-links ul li a {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links .sub-menu {
+        display: none;
+        position: absolute;
+        transition: 0.2s;
+
+    }
+
+    .logo-img {
+        background: rgba (255, 255, 255, 0.5);
+        z-index: 50;
+
+        .little-roni {
+            width: 60px;
+            display: none;
+
+        }
+    }
+
+}
+
+.accessibility {
+    z-index: 15;
+    display: inline;
+    position: fixed;
+    margin: 20px;
+    height: 4vh;
+    #accessibility {
+        color: $yellow;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.2rem;
+        transition: 0.3s;
+
+    }
+}
+
+
+//inscription
+.form-inscription {
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    .input-group {
+        position: relative;
+        padding: 15px 0 0;
+        margin-top: 10px;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .input-field {
+        font-family: inherit;
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid $brown;
+        outline: 0;
+        font-size: 1.3rem;
+        color: $black;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:placeholder-shown~.label {
+            font-size: 1.3rem;
+            cursor: text;
+            top: 20px;
+        }
+    }
+
+    .label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: $brown;
+    }
+
+    .input-field:focus {
+        ~.label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: $brown;
+            font-weight: 700;
+        }
+        padding-bottom: 6px;
+        font-weight: 700;
+        border-width: 3px;
+        border-image: linear-gradient(to right,
+        $yellow,
+        #FF715B);
+        border-image-slice: 1;
+    }
+    .input-field {
+        &:required,
+        &:invalid {
+            box-shadow: none;
+        }
+    }
+
+
+
+}
+
+.button {
+    background: #fff;
+    color: $green;
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 1rem;
+    border: 0;
+    transition: all 0.5s;
+    border-radius: 10px;
+    border: 2px solid $green;
+    width: 100%;
+    position: relative;
+    min-width: 250px;
+
+
+    &:hover {
+        background: $green;
+        transition: all 0.5s;
+        box-shadow: 0px 6px 15px $green;
+        color: #ffffff;
+    }
+}
+
+.red {
+    color: $red;
+    border: 2px solid $red;
+
+    &:hover {
+        background: $red;
+        box-shadow: 0px 6px 15px $red;
+    }
+}
+
+.main-title {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.3);
+
+    p {
+        margin: 10px;
+        text-align: justify;
+        padding-bottom: 10px;
+    }
+
+    h1 {
+        color: $yellow;
+        margin-bottom: 40px;
+        padding-top: 10px;
+    }
+
+
+}
+
+//text animate home page
+.animate-area {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    p {
+        overflow: hidden;
+    }
+
+    .animate-text {
+        padding-top: 10px;
+        margin-top: 20px;
+        font-size: 3.4rem;
+        color: $yellow;
+        margin-bottom: 100px;
+    }
+
+    span {
+        display: block;
+        line-height: 46px;
+        display: none;
+    }
+
+    span.text-in {
+        display: block;
+        animation: textIn .5s ease;
+    }
+    span.text-out {
+        animation: textOut .5s ease;
+    }
+
+    @keyframes textIn {
+        0% {
+            transform: translateY(100%);
+        }
+        100% {
+            transform: translateY(0%);
+        }
+    }
+
+    @keyframes textOut {
+        0% {
+            transform: translateY(0%);
+        }
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+}
+
+input {
+    margin-bottom: 40px;
+    display: block;
+
+}
+
+.fa-angle-down {
+    transform: rotate(90deg);
+    transition: 0.2s;
+}
+
+
+
+.layer-home {
+    background: rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+
+    text-align: center;
+    position: relative;
+    height: 100%;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.connect-info {
+    height: 100vh;
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.change-password {
+    h3 {
+        margin: 20px 0;
+    }
+    input {
+        width: 100%;
+    }
+}
+
+
+.disconnect {
+    text-decoration: none;
+    color: $red;
+    text-transform: uppercase;
+}
+
+main {
+
+    .bg {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        border-radius: 5px;
+    }
+    .list-stage {
+        background: rgba(255, 255, 255, 0.35);
+        margin: 10px 30px;
+        padding-bottom: 10px;
+
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+            font-size: 20px;
+            padding: 10px 0;
+        }
+        .stage {
+            font-weight: bold;
+
+        }
+    }
+
+    .animate-area {
+        padding: 70px 30px 0;
+        font-size: 1.7rem;
+
+        .animate-text {
+            font-size: 2rem;
+        }
+    }
+
+    .main-title {
+        margin: 0px 30px;
+        margin-top: 70px;
+    }
+
+    .list-category {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        .menu {
+            line-height: 70px;
+            text-align: center;
+            list-style: none;
+            text-transform: uppercase;
+            font-weight: bold;
+
+        }
+
+        .menu li a {
+            font-family: 'Dosis', sans-serif;
+            color: $brown;
+            text-decoration: none;
+
+        }
+    }
+
+
+
+}
+
+@media screen and (min-width: 576px) {}
+
+@media screen and (min-width: 768px) {
+
+
+    .loading-container {
+        .roni {
+            width: 150px;
+        }
+
+        .container {
+            height: 100%;
+        }
+
+        header {
+            padding-bottom: 0px;
+        }
+        .pd-top {
+            padding-top: 150px;
+        }
+    }
+
+    body {
+
+        .form-inscription {
+            padding-top: 30px;
+        }
+        footer {
+            .footer-contact {
+
+                p {
+                    padding-right: 50px;
+                }
+                .social {
+                    flex-direction: row;
+                    align-items: center;
+                    .fa-brands {
+                        margin: 20 px;
+                    }
+                }
+            }
+        }
+    } //navbar
+    nav {
+        flex-direction: row;
+        height: 7vh;
+        min-height: 75px;
+        align-items: center;
+        justify-content: space-between;
+        background: transparent;
+
+
+        .fa-bars {
+            display: none;
+        }
+        .nav-links {
+            backdrop-filter: none;
+            background: none;
+            display: flex;
+            position: fixed;
+            width: 100%;
+            height: 7vh;
+            top: 0px;
+            margin-top: 20px;
+            justify-content: end;
+            transition: none;
+        }
+        .nav-links ul {
+            margin-right: 1em;
+            font-size: 15px;
+            flex-direction: row;
+        }
+
+        .nav-links ul li {
+            position: relative;
+        }
+
+
+        .nav-links ul a {
+            font-size: 1.5vw;
+
+
+        }
+        .nav-links ul li a {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .nav-links ul li a:hover {
+            color: $brown;
+
+        }
+
+        .nav-links ul .hover li .padding {
+            transition: 0.5s;
+
+        }
+        .nav-links ul .hover:hover li .padding {
+            padding-bottom: 300px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.9);
+
+
+
+        }
+        .nav-links ul .hover:hover .sub-menu {
+            display: block;
+            position: absolute;
+            transition: 0.5s;
+        }
+
+        .sub-menu li {
+            margin-top: 30px 0;
+        }
+
+        .sub-menu li:hover {
+            background: rgba (255, 255, 255, 0.8);
+            border-radius: 4px;
+        }
+        li:hover .fa-angle-down {
+            transform: rotate(0deg);
+        }
+
+        .logo-img {
+            .little-roni {
+                display: block;
+                width: 70px;
+                margin-left: 3em;
+
+            }
+        }
+    }
+
+    main {
+
+
+        .animate-area {
+            padding: 70px 30px 0;
+        }
+    }
+
+
+    .connect-info {
+        padding-top: 30px
+    }
+
+    .carousel-button {
+        width: 45vw;
+    }
+
+
+
+}
+
+
+@media screen and (min-width: 1200px) {
+    .loading-container {
+        .img-container {
+            display: flex;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            text-align: center;
+            .roni {
+                width: 200px;
+                position: absolute;
+                margin: auto;
+                left: 0;
+                right: 0;
+            }
+        }
+
+        .roni:hover {
+            width: 220px;
+
+        }
+
+        .text-loading-container {
+
+            h1 {
+                font-size: 5em;
+            }
+        }
+    }
+
+
+
+
+    nav {
+
+        .nav-links ul {
+            margin-right: 7em;
+            font-size: 15px;
+        }
+
+        .nav-links ul a {
+            font-size: 18px;
+
+        }
+
+        .logo-img {
+            .little-roni {
+                width: 100px;
+                margin-left: 5em;
+
+            }
+        }
+    }
+
+    .accessibility {
+        margin: 20px;
+    }
+
+    main {
+        .animate-area {
+            font-size: 3rem;
+
+            .animate-text {
+                font-size: 3.7rem;
+            }
+        }
+
+        .list-stage {}
+    }
+
+
+}
